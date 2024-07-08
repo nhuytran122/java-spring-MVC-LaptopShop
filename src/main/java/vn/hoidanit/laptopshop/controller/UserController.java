@@ -17,24 +17,24 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/nhuy")    
-    public String getHomePage(){
+    @RequestMapping("/")
+    public String getHomePage() {
         String test = this.userService.handleHello();
-        return "nhuy.html";
+        return "hello";
     }
 }
 
 // @RestController
 // public class UserController {
-//     private UserService userService;
+// private UserService userService;
 
-//     // DI: dependency injector
-//     public UserController(UserService userService) {
-//         this.userService = userService;
-//     }
+// // DI: dependency injector
+// public UserController(UserService userService) {
+// this.userService = userService;
+// }
 
-//     @GetMapping("")
-//     public String getHomePage() {
-//         return this.userService.handleHello();
-//     }
+// @GetMapping("")
+// public String getHomePage() {
+// return this.userService.handleHello();
+// }
 // }
