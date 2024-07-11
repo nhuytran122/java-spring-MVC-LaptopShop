@@ -1,5 +1,6 @@
 package vn.hoidanit.laptopshop.controller;
 
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,8 @@ public class UserController {
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
+        List<User> arrUsers = this.userService.getAllUsersByEmail("nhuy@gmail.com");
+        System.out.println(arrUsers);
         model.addAttribute("nhuy", "test");
         model.addAttribute("hoidanit", "from controller with model");
         return "hello";
