@@ -32,6 +32,12 @@ public class UserController {
 
     @RequestMapping("/admin/user")
     public String getUserPage(Model model) {
+        // model.addAttribute("newUser", new User());
+        return "admin/user/users";
+    }
+
+    @RequestMapping("/admin/user/create")
+    public String getCreateUserPage(Model model) {
         model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
@@ -42,4 +48,5 @@ public class UserController {
         this.userService.handleSaveServer(hoidanit);
         return "hello";
     }
+
 }
