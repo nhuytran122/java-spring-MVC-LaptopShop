@@ -40,8 +40,9 @@ public class UserController {
 
     @RequestMapping("/admin/user/{id}")
     public String getUserDetailsPage(Model model, @PathVariable long id) {
-        System.out.println("check path id = " + id);
-        model.addAttribute("id", id);
+        // model.addAttribute("id", id);
+        User userFindByID = this.userService.getUserById(id);
+        model.addAttribute("user", userFindByID);
         return "admin/user/show";
     }
 
