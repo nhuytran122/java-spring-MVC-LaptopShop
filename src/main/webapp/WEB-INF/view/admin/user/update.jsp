@@ -23,11 +23,11 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mx-auto">
                             <h3>Update a user</h3>
-                            <hr/>
+                            <hr />
                             <form:form method="post" action="/admin/user/update" modelAttribute="user">
-                                <div class="mb-3">
+                                <div class="mb-3" style="display: none;">
                                     <label class="form-label">ID: </label>
-                                    <input type="text" class="form-control" path="id" value="${id}"></input>
+                                    <form:input type="text" class="form-control" path="id" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Email:</label>
