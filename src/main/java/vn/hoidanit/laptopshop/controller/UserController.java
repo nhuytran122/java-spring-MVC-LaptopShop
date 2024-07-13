@@ -68,6 +68,21 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
+    @GetMapping("/admin/user/delete/{id}")
+    public String getDeleteUserPage(Model model, @PathVariable long id) {
+        model.addAttribute("newUser", new User());
+        model.addAttribute("id", id);
+        return "admin/user/delete";
+    }
+
+    @PostMapping("/admin/user/delete")
+    public String postMethodName(Model model, @ModelAttribute("user") User hoidanit) {
+        System.out.println("RUN HERE");
+        model.addAttribute("user", hoidanit);
+        this.userService.deleteById(hoidanit.getId());
+        return "redirect:/admin/user";
+    }
+
     @RequestMapping("/admin/user/create") // GET
     public String getCreateUserPage(Model model) {
         model.addAttribute("newUser", new User());

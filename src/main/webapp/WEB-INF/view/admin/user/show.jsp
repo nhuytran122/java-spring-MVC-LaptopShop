@@ -23,7 +23,8 @@
                         <div class="d-flex justify-content-between">
                             <h3> User Details with id = ${user.id}</h3>
                         </div>
-                        </hr>
+                        <hr />
+
                         <div class="card" style="width: 60%">
                             <div class="card-header">
                                 User Information
