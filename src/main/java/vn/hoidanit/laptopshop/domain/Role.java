@@ -17,19 +17,12 @@ import lombok.ToString;
 @NoArgsConstructor
 
 @Entity
-public class User {
-
+public class Role {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String name;
+    private String description;
 
-    private String email;
-    private String password;
-    private String fullName;
-    private String address;
-    private String phone;
-
-    private String avatar;
-
-    //roleId
 }
