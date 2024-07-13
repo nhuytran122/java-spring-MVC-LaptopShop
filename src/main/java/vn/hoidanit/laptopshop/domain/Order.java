@@ -3,7 +3,7 @@ package vn.hoidanit.laptopshop.domain;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Table;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +18,7 @@ import lombok.ToString;
 @NoArgsConstructor
 
 @Entity
+@Table(name = "orders")
 public class Order {
     
     @Id

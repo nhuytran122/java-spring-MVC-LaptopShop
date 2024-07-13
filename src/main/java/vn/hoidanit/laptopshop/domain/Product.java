@@ -3,7 +3,7 @@ package vn.hoidanit.laptopshop.domain;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Table;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,8 +18,9 @@ import lombok.ToString;
 @NoArgsConstructor
 
 @Entity
+@Table(name = "products")
 public class Product {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -32,5 +33,5 @@ public class Product {
     private long quantity;
     private long sold;
     private String factory;
-    private String target; 
+    private String target;
 }
