@@ -78,7 +78,6 @@ public class UserController {
     @PostMapping("/admin/user/delete")
     public String postMethodName(Model model, @ModelAttribute("user") User hoidanit) {
         System.out.println("RUN HERE");
-        model.addAttribute("user", hoidanit);
         this.userService.deleteById(hoidanit.getId());
         return "redirect:/admin/user";
     }
