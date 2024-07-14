@@ -28,7 +28,7 @@
                                 </ol>
                                 <div class="container mt-5">
                                     <div class="row">
-                                        <div class="col-12 mx-auto">
+                                        <div class="col-9 mx-auto">
                                             <div class="d-flex justify-content-between">
                                                 <h3> User Details with id = ${user.id}</h3>
                                             </div>
