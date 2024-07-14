@@ -3,7 +3,11 @@ package vn.hoidanit.laptopshop.domain;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,4 +38,8 @@ public class Product {
     private long sold;
     private String factory;
     private String target;
+
+    // K nhất thiết (mqh unidrectional)
+    // @OneToMany(mappedBy = "product")
+    // private List<OrderDetail> orderDetails;
 }
