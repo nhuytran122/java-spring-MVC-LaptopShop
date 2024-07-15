@@ -16,22 +16,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.ServletContext;
+import lombok.AllArgsConstructor;
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.service.UploadService;
 import vn.hoidanit.laptopshop.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 
+@AllArgsConstructor
 @Controller
 public class UserController {
 
     private final UserService userService;
-
-    private final ServletContext servletContext;
+    private final UploadService uploadService;
 
     // DI: dependency injector
-    public UserController(UserService userService, ServletContext servletContext) {
-        this.userService = userService;
-        this.servletContext = servletContext;
-    }
+    // public UserController(UserService userService, UploadService uploadService) {
+    // this.userService = userService;
+    // this.uploadService = uploadService;
+    // }
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
@@ -102,25 +104,8 @@ public class UserController {
             @ModelAttribute("newUser") User hoidanit,
             @RequestParam("hoidanitFile") MultipartFile file) {
 
-        try {
-            byte[] bytes = file.getBytes();
-
-            String rootPath = this.servletContext.getRealPath("/resources/images");
-            File dir = new File(rootPath + File.separator + "avatar");
-            if (!dir.exists())
-                dir.mkdirs();
-            // Create the file on server
-            File serverFile = new File(dir.getAbsolutePath() + File.separator +
-                    System.currentTimeMillis() + "-" + file.getOriginalFilename());
-            BufferedOutputStream stream = new BufferedOutputStream(
-                    new FileOutputStream(serverFile));
-            stream.write(bytes);
-            stream.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        //this.userService.handleSaveServer(hoidanit);
+        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
+        // this.userService.handleSaveServer(hoidanit);
         return "redirect:/admin/user";
     }
 
