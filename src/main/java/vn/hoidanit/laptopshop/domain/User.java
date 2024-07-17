@@ -14,11 +14,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+// import lombok.ToString; : tránh lỗi StackOverflowError
 
 @Getter
 @Setter
-@ToString
+// @ToString //@ToString.Exclude
 @AllArgsConstructor
 @NoArgsConstructor
 
