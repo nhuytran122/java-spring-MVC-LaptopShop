@@ -11,7 +11,7 @@ import vn.hoidanit.laptopshop.domain.User;
 @Repository
 // crud: create, read, update, delete
 public interface UserRepository extends JpaRepository<User, Long> {
-    User save(User hoidanit);;
+    User save(User hoidanit);
 
     List<User> findByEmail(String email);
 

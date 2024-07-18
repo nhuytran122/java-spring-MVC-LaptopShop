@@ -87,8 +87,7 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/delete")
-    public String postMethodName(Model model, @ModelAttribute("user") User hoidanit) {
-        System.out.println("RUN HERE");
+    public String postDeleteUser(Model model, @ModelAttribute("newUser") User hoidanit) {
         this.userService.deleteById(hoidanit.getId());
         return "redirect:/admin/user";
     }
@@ -108,10 +107,11 @@ public class UserController {
         // validate
         // List<FieldError> errors = newUserbindingResult.getFieldErrors();
         // for (FieldError error : errors) {
-        //     System.out.println(">>>>>>>" + error.getField() + " - " + error.getDefaultMessage());
+        // System.out.println(">>>>>>>" + error.getField() + " - " +
+        // error.getDefaultMessage());
         // }
 
-        if(newUserbindingResult.hasErrors()){
+        if (newUserbindingResult.hasErrors()) {
             return "/admin/user/create";
         }
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");

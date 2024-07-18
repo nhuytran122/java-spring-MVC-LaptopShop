@@ -19,4 +19,12 @@ public class ProductService {
     public List<Product> fetchProducts(){
         return this.productRepository.findAll();
     }
+
+    public Product getProductByID(long id){
+        return this.productRepository.findById(id);
+    }
+
+    public void deleteById(long id) {
+        this.productRepository.deleteById(id);
+    }
 }
