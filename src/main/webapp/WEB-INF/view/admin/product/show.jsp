@@ -44,17 +44,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach var="product" items="${product1}">
+                                                <c:forEach var="product" items="${products}">
                                                     <tr>
                                                         <td>${product.id}</td>
                                                         <td>${product.name}</td>
                                                         <td>${product.price}</td>
                                                         <td>${product.factory}</td>
                                                         <td>
-                                                            <a href="/admin/product/${product.id}" class="btn btn-success">View</a>
+                                                            <a href="/admin/product/${product.id}"
+                                                                class="btn btn-success">View</a>
                                                             <a href="/admin/product/update/${product.id}"
                                                                 class="btn btn-warning mx-2">Update</a>
-                                                            <a href="/admin/product/delete/${product.id}" class="btn btn-danger">Delete</a>
+                                                            <a href="/admin/product/delete/${product.id}"
+                                                                class="btn btn-danger">Delete</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -67,7 +69,7 @@
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                 crossorigin="anonymous"></script>
-            <script src="js/scripts.js"></script>
+            <script src="/js/scripts.js"></script>
         </body>
 
         </html>
