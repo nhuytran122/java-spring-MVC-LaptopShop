@@ -35,7 +35,7 @@
                                             </div>
                                             <hr />
 
-                                            <div class="card" style="width: 60%">
+                                            <div class="card" style="width: 100%">
                                                 <li class="list-group-item"><img src="/images/product/${pr.image}" alt=""></li>
                                                 <div class="card-header">
                                                     Product Information
