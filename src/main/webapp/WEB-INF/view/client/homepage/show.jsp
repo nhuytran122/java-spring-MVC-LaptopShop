@@ -45,8 +45,6 @@
 
                 <jsp:include page="../layout/header.jsp" />
 
-
-
                 <!-- Modal Search Start -->
                 <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -71,9 +69,6 @@
                 <!-- Modal Search End -->
 
                 <jsp:include page="../layout/banner.jsp" />
-
-                <jsp:include page="../layout/feature.jsp" />
-
 
                 <!-- Fruits Shop Start-->
                 <div class="container-fluid fruite py-5">
@@ -110,10 +105,11 @@
                                                                 style="top: 10px; left: 10px;">Laptop</div>
                                                             <div
                                                                 class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                <h4 style="font-size: 15px"><a href="/product/${product.id}">${product.name}</a> </h4>
+                                                                <h4 style="font-size: 15px"><a
+                                                                        href="/product/${product.id}">${product.name}</a>
+                                                                </h4>
                                                                 <p style="font-size: 13px">${product.shortDesc}</p>
-                                                                <div
-                                                                    class="d-flex flex-lg-wrap">
+                                                                <div class="d-flex flex-lg-wrap">
                                                                     <p style="font-size: 15px; text-align: center; width: 100%;"
                                                                         class="text-dark fw-bold mb-3">
                                                                         <fmt:formatNumber type="number"
@@ -138,7 +134,7 @@
                 </div>
                 <!-- Fruits Shop End-->
 
-
+                <jsp:include page="../layout/feature.jsp" />
 
                 <jsp:include page="../layout/footer.jsp" />
 

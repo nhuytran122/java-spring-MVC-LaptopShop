@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.AllArgsConstructor;
-import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.service.ProductService;
 
 @AllArgsConstructor
@@ -21,5 +20,9 @@ public class HomePageController {
         model.addAttribute("products", this.productService.fetchProducts());
         return "client/homepage/show";
     }
-    
+
+    @GetMapping("/register")
+    public String getRegisterPage(Model model) {
+        return "client/auth/register";
+    }
 }
