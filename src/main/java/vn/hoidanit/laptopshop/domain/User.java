@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import vn.hoidanit.laptopshop.service.validator.StrongPassword;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -42,6 +43,7 @@ public class User {
     @NotNull
     @Size(min = 2, message = "Password phải có tối thiểu 2 ký tự")
     @Size(max = 255, message = "Password phải có tối đa 255 ký tự")
+    @StrongPassword(message = "Password phải có 8 ký tự...")
     private String password;
 
     @NotNull
