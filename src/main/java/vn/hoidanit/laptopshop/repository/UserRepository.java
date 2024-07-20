@@ -13,7 +13,7 @@ import vn.hoidanit.laptopshop.domain.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     User save(User hoidanit);
 
-    List<User> findByEmail(String email);
+    List<User> findOneByEmail(String email);
 
     List<User> findAll();
 
@@ -22,4 +22,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void deleteById(long id);
 
     boolean existsByEmail(String email);
+
+    User findByEmail(String email);
 }
