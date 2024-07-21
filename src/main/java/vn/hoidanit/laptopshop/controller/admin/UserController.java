@@ -112,6 +112,7 @@ public class UserController {
         // }
 
         if (newUserbindingResult.hasErrors()) {
+            // return "/admin/user/create"; -error 400
             return "admin/user/create";
         }
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
