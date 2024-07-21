@@ -11,8 +11,8 @@
                         data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
-                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-                        <div class="navbar-nav mx-auto">
+                    <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
+                        <div class="navbar-nav">
                             <a href="/" class="nav-item nav-link active">Trang Chủ</a>
                             <a href="/products" class="nav-item nav-link">Sản Phẩm</a>
 
