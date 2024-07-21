@@ -112,7 +112,7 @@ public class UserController {
         // }
 
         if (newUserbindingResult.hasErrors()) {
-            return "/admin/user/create";
+            return "admin/user/create";
         }
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(hoidanit.getPassword());
