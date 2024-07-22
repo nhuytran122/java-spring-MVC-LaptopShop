@@ -1,6 +1,7 @@
 package vn.hoidanit.laptopshop.controller.admin;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,15 +83,15 @@ public class ProductController {
             @ModelAttribute("pr") @Valid Product prd,
             BindingResult newProductbindingResult,
             @RequestParam("productFile") MultipartFile file) {
-        
+
         if (newProductbindingResult.hasErrors()) {
             return "/admin/product/update";
         }
-        Product currentPr = this.productService.getProductByID(prd.getId());
+        Product currentPr = this.productService.getProductByID(prd.getId()).get();
 
         if (currentPr != null) {
-            //tránh trường hợp user không upload file -> giữ nguyên file cũ
-            if(!file.isEmpty()){
+            // tránh trường hợp user không upload file -> giữ nguyên file cũ
+            if (!file.isEmpty()) {
                 String img = this.uploadService.handleSaveUploadFile(file, "product");
                 currentPr.setImage(img);
             }
