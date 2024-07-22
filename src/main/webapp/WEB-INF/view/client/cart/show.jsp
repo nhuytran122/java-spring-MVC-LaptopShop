@@ -71,25 +71,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="cd" items="${cartDetails}">
+                                        <c:forEach var="cartDetail" items="${cartDetails}">
                                             <tr>
                                                 <th scope="row">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="/images/product/${cd.product.image}"
+                                                        <img src="/images/product/${cartDetail.product.image}"
                                                             class="img-fluid me-5 rounded-circle"
                                                             style="width: 80px; height: 80px;" alt="">
                                                     </div>
                                                 </th>
                                                 <td>
                                                     <p class="mb-0 mt-4">
-                                                        <a href="/product/${cd.product.id}" target="_blank">
-                                                            ${cd.product.name}
+                                                        <a href="/product/${cartDetail.product.id}" target="_blank">
+                                                            ${cartDetail.product.name}
                                                         </a>
                                                     </p>
                                                 </td>
                                                 <td>
                                                     <p class="mb-0 mt-4">
-                                                        <fmt:formatNumber type="number" value="${cd.price}" /> đ
+                                                        <fmt:formatNumber type="number" value="${cartDetail.price}" /> đ
                                                     </p>
                                                 </td>
 
@@ -103,7 +103,11 @@
                                                         </div>
                                                         <input type="text"
                                                             class="form-control form-control-sm text-center border-0"
-                                                            value="${cd.quantity}">
+                                                            value="${cartDetail.quantity}" 
+                                                            
+                                                            data-cart-detail-id="${cartDetail.id}"
+                                                            data-cart-detail-price="${cartDetail.price}">
+
                                                         <div class="input-group-btn">
                                                             <button
                                                                 class="btn btn-sm btn-plus rounded-circle bg-light border">
@@ -113,9 +117,9 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <p class="mb-0 mt-4">
+                                                    <p class="mb-0 mt-4" data-cart-detail-id="${cartDetail.id}">
                                                         <fmt:formatNumber type="number"
-                                                            value="${cd.product.price * cd.quantity}" /> đ
+                                                            value="${cartDetail.product.price * cartDetail.quantity}" /> đ
                                                     </p>
                                                 </td>
 
@@ -139,7 +143,7 @@
                                             <h1 class="display-6 mb-4">Thông tin đơn hàng</h1>
                                             <div class="d-flex justify-content-between mb-4">
                                                 <h5 class="mb-0 me-4">Tạm tính</h5>
-                                                <p class="mb-0">
+                                                <p class="mb-0" data-cart-total-price = "${totalPrice}">
                                                     <fmt:formatNumber type="number" value="${totalPrice}" /> đ
                                                 </p>
                                             </div>
@@ -152,7 +156,7 @@
                                         </div>
                                         <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                             <h5 class="mb-0 ps-4 me-4">Tổng thanh toán</h5>
-                                            <p class="mb-0 pe-4">
+                                            <p class="mb-0 pe-4" data-cart-total-price = "${totalPrice}">
                                                 <fmt:formatNumber type="number" value="${totalPrice}" /> đ
                                             </p>
                                         </div>
