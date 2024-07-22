@@ -84,4 +84,8 @@ public class ProductService {
 
         // lưu cart_detail
     }
+
+    public Cart fetchCartByUser(User user){
+        return this.cartRepository.findByUser(user);
+    }
 }
