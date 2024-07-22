@@ -57,113 +57,127 @@
                                 </ol>
                             </nav>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Sản Phẩm</th>
-                                        <th scope="col">Tên</th>
-                                        <th scope="col">Đơn Giá</th>
-                                        <th scope="col">Số Lượng</th>
-                                        <th scope="col">Số Tiền</th>
-                                        <th scope="col">Xử Lý</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach var="cd" items="${cartDetails}">
+                        <c:if test="${not empty cartDetails}">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
                                         <tr>
-                                            <th scope="row">
-                                                <div class="d-flex align-items-center">
-                                                    <img src="/images/product/${cd.product.image}"
-                                                        class="img-fluid me-5 rounded-circle"
-                                                        style="width: 80px; height: 80px;" alt="">
-                                                </div>
-                                            </th>
-                                            <td>
-                                                <p class="mb-0 mt-4">
-                                                    <a href="/product/${cd.product.id}" target="_blank">
-                                                        ${cd.product.name}
-                                                    </a>
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 mt-4">
-                                                    <fmt:formatNumber type="number" value="${cd.price}" /> đ
-                                                </p>
-                                            </td>
-
-                                            <td>
-                                                <div class="input-group quantity mt-4" style="width: 100px;">
-                                                    <div class="input-group-btn">
-                                                        <button
-                                                            class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                                            <i class="fa fa-minus"></i>
-                                                        </button>
-                                                    </div>
-                                                    <input type="text"
-                                                        class="form-control form-control-sm text-center border-0"
-                                                        value="${cd.quantity}">
-                                                    <div class="input-group-btn">
-                                                        <button
-                                                            class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="mb-0 mt-4">
-                                                    <fmt:formatNumber type="number"
-                                                        value="${cd.product.price * cd.quantity}" /> đ
-                                                </p>
-                                            </td>
-
-                                            <td>
-                                                <button class="btn btn-md rounded-circle bg-light border mt-4">
-                                                    <i class="fa fa-times text-danger"></i>
-                                                </button>
-                                            </td>
-
+                                            <th scope="col">Sản Phẩm</th>
+                                            <th scope="col">Tên</th>
+                                            <th scope="col">Đơn Giá</th>
+                                            <th scope="col">Số Lượng</th>
+                                            <th scope="col">Số Tiền</th>
+                                            <th scope="col">Xử Lý</th>
                                         </tr>
-                                    </c:forEach>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="cd" items="${cartDetails}">
+                                            <tr>
+                                                <th scope="row">
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="/images/product/${cd.product.image}"
+                                                            class="img-fluid me-5 rounded-circle"
+                                                            style="width: 80px; height: 80px;" alt="">
+                                                    </div>
+                                                </th>
+                                                <td>
+                                                    <p class="mb-0 mt-4">
+                                                        <a href="/product/${cd.product.id}" target="_blank">
+                                                            ${cd.product.name}
+                                                        </a>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0 mt-4">
+                                                        <fmt:formatNumber type="number" value="${cd.price}" /> đ
+                                                    </p>
+                                                </td>
 
-                                </tbody>
-                            </table>
-                        </div>
+                                                <td>
+                                                    <div class="input-group quantity mt-4" style="width: 100px;">
+                                                        <div class="input-group-btn">
+                                                            <button
+                                                                class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                                <i class="fa fa-minus"></i>
+                                                            </button>
+                                                        </div>
+                                                        <input type="text"
+                                                            class="form-control form-control-sm text-center border-0"
+                                                            value="${cd.quantity}">
+                                                        <div class="input-group-btn">
+                                                            <button
+                                                                class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="mb-0 mt-4">
+                                                        <fmt:formatNumber type="number"
+                                                            value="${cd.product.price * cd.quantity}" /> đ
+                                                    </p>
+                                                </td>
 
-                        <div class="mt-5 row g-4 justify-content-start">
-                            <div class="col-12 col-md-8">
-                                <div class="bg-light rounded">
-                                    <div class="p-4">
-                                        <h1 class="display-6 mb-4">Thông tin đơn hàng</h1>
-                                        <div class="d-flex justify-content-between mb-4">
-                                            <h5 class="mb-0 me-4">Tạm tính</h5>
-                                            <p class="mb-0">
+                                                <td>
+                                                    <button class="btn btn-md rounded-circle bg-light border mt-4">
+                                                        <i class="fa fa-times text-danger"></i>
+                                                    </button>
+                                                </td>
+
+                                            </tr>
+                                        </c:forEach>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="mt-5 row g-4 justify-content-start">
+                                <div class="col-12 col-md-8">
+                                    <div class="bg-light rounded">
+                                        <div class="p-4">
+                                            <h1 class="display-6 mb-4">Thông tin đơn hàng</h1>
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <h5 class="mb-0 me-4">Tạm tính</h5>
+                                                <p class="mb-0">
+                                                    <fmt:formatNumber type="number" value="${totalPrice}" /> đ
+                                                </p>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <h5 class="mb-0 me-4">Phí vận chuyển</h5>
+                                                <div class="">
+                                                    <p class="mb-0">0 đ</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                                            <h5 class="mb-0 ps-4 me-4">Tổng thanh toán</h5>
+                                            <p class="mb-0 pe-4">
                                                 <fmt:formatNumber type="number" value="${totalPrice}" /> đ
                                             </p>
                                         </div>
-                                        <div class="d-flex justify-content-between">
-                                            <h5 class="mb-0 me-4">Phí vận chuyển</h5>
-                                            <div class="">
-                                                <p class="mb-0">0 đ</p>
-                                            </div>
-                                        </div>
+                                        <button
+                                            class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+                                            type="button">Xác nhận đặt hàng</button>
                                     </div>
-                                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                                        <h5 class="mb-0 ps-4 me-4">Tổng thanh toán</h5>
-                                        <p class="mb-0 pe-4">
-                                            <fmt:formatNumber type="number" value="${totalPrice}" /> đ
-                                        </p>
-                                    </div>
-                                    <button
-                                        class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-                                        type="button">Xác nhận đặt hàng</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!-- Cart Page End -->
+                </c:if>
+
+                <c:if test="${empty cartDetails}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 mt-5">
+                                <div class="alert alert-danger" role="alert">
+                                    Giỏ hàng không có sản phẩm
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Cart Page End -->
+                </c:if>
 
 
                 <jsp:include page="../layout/footer.jsp" />
