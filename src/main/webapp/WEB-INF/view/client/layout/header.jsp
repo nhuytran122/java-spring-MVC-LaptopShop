@@ -41,13 +41,14 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end p-4" arialabelledby="dropdownMenuLink">
                                         <li class="d-flex align-items-center flex-column"
-                                            style="min-width: 300px; height: 150px; border-radius: 50%; overflow: hidden;">
+                                            style="min-width: 250px; height: 150px; border-radius: 50%; overflow: hidden;">
                                             <img style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;"
                                                 src="/images/avatar/${sessionScope.avatar}" />
-                                            <div class="text-center my-3">
-                                                <c:out value="${sessionScope.fullName}" />
-                                            </div>
+
                                         </li>
+                                        <div class="text-center my-3">
+                                            <c:out value="${sessionScope.fullName}" />
+                                        </div>
                                         <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
                                         <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
                                         <li>

@@ -67,9 +67,22 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update")
-    public String postUpdateUser(Model model, @ModelAttribute("user") User hoidanit) {
+    public String postUpdateUser(Model model,
+            @ModelAttribute("user") @Valid User hoidanit,
+            BindingResult newUserbindingResult,
+            @RequestParam("hoidanitFile") MultipartFile file) {
+
         User currentUser = this.userService.getUserById(hoidanit.getId());
+
+        if (newUserbindingResult.hasErrors()) {
+            return "admin/user/update";
+        }
+
         if (currentUser != null) {
+            if (!file.isEmpty()) {
+                String img = this.uploadService.handleSaveUploadFile(file, "avatar");
+                currentUser.setAvatar(img);
+            }
             currentUser.setAddress(hoidanit.getAddress());
             currentUser.setFullName(hoidanit.getFullName());
             currentUser.setPhone(hoidanit.getPhone());
@@ -115,7 +128,15 @@ public class UserController {
             // return "/admin/user/create"; -error 400
             return "admin/user/create";
         }
-        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
+
+        String avatar;
+        if (file.isEmpty()) {
+            // Nếu không có file upload, gán giá trị mặc định
+            avatar = "avatar-default.jpg";
+        } else {
+            // Xử lý upload file
+            avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
+        }
         String hashPassword = this.passwordEncoder.encode(hoidanit.getPassword());
 
         hoidanit.setAvatar(avatar);

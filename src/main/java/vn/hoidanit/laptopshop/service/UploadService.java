@@ -20,9 +20,9 @@ public class UploadService {
     }
 
     public String handleSaveUploadFile(MultipartFile file, String targetFolder) {
-//don't upload file:
-if(file.isEmpty())
-return "";
+        // don't upload file:
+        if (file.isEmpty())
+            return "";
 
         // relative path : absolute path
         // this.servletContext.getRealPath: trả ra folder wabapp (debug để thấy rõ nếu

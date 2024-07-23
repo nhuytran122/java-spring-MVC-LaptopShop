@@ -18,7 +18,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import vn.hoidanit.laptopshop.domain.Product;
-import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.service.ProductService;
 import vn.hoidanit.laptopshop.service.UploadService;
 
@@ -68,13 +67,13 @@ public class ProductController {
 
     @GetMapping("/admin/product/{id}")
     public String getProductDetailsPage(Model model, @PathVariable long id) {
-        model.addAttribute("pr", this.productService.getProductByID(id));
+        model.addAttribute("pr", this.productService.getProductByID(id).get());
         return "admin/product/detail";
     }
 
     @GetMapping("/admin/product/update/{id}")
     public String getUpdateUserPage(Model model, @PathVariable long id) {
-        model.addAttribute("pr", this.productService.getProductByID(id));
+        model.addAttribute("pr", this.productService.getProductByID(id).get());
         return "admin/product/update";
     }
 

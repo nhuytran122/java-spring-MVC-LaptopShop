@@ -35,6 +35,10 @@
                                             </div>
                                             <hr />
 
+                                            <li class="list-group-item"><img src="/images/avatar/${user.avatar}"
+                                                    alt="avatar" style="width: 200px; height: 200px;">
+                                            </li>
+
                                             <div class="card" style="width: 60%">
                                                 <div class="card-header">
                                                     User Information
