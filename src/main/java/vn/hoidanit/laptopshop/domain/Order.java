@@ -33,6 +33,14 @@ public class Order {
 
     private double totalPrice;
 
+    private String receiverName;
+
+    private String receiverAddress;
+
+    private String receiverPhone;
+
+    private String status;
+
     // user id
     @ManyToOne
     @JoinColumn(name = "user_id")

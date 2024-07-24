@@ -92,23 +92,38 @@ public class ProductService {
     }
 
     public void handleRemoveCartDetail(long cartDetailId, HttpSession session) {
-        CartDetail cartDetail = this.cartDetailRepository.findById(cartDetailId);
-        Cart cart = cartDetail.getCart();
+        Optional<CartDetail> cartDetailOptional = this.cartDetailRepository.findById(cartDetailId);
+        if (cartDetailOptional.isPresent()) {
+            CartDetail cartDetail = cartDetailOptional.get();
+            Cart currentCart = cartDetail.getCart();
 
-        // delete cart-detail
-        this.cartDetailRepository.deleteById(cartDetailId);
+            // delete cart-detail
+            this.cartDetailRepository.deleteById(cartDetailId);
 
-        if (cart.getSum() > 1) {
-            // update current cart
-            int s = cart.getSum() - 1;
-            cart.setSum(s);
-            session.setAttribute("sum", s);
-            this.cartRepository.save(cart);
-        } else {
-            // delete cart (sum = 1)
-            this.cartRepository.deleteById(cart.getId());
-            session.setAttribute("sum", 0);
+            if (currentCart.getSum() > 1) {
+                // update current cart
+                int s = currentCart.getSum() - 1;
+                currentCart.setSum(s);
+                session.setAttribute("sum", s);
+                this.cartRepository.save(currentCart);
+            } else {
+                // delete cart (sum = 1)
+                this.cartRepository.deleteById(currentCart.getId());
+                session.setAttribute("sum", 0);
+            }
         }
 
     }
+
+    public void handleUpdateCartBeforeCheckout(List<CartDetail> cartDetails) {
+        for (CartDetail cartDetail : cartDetails) {
+            Optional<CartDetail> cdOptional = this.cartDetailRepository.findById(cartDetail.getId());
+            if (cdOptional.isPresent()) {
+                CartDetail currentCartDetail = cdOptional.get();
+                currentCartDetail.setQuantity(cartDetail.getQuantity());
+                this.cartDetailRepository.save(currentCartDetail);
+            }
+        }
+    }
+
 }
