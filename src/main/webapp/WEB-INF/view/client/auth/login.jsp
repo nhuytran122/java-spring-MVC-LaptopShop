@@ -45,7 +45,7 @@
                                                     </div>
                                                     <div class="form-floating mb-3">
                                                         <input class="form-control" type="password"
-                                                            placeholder="Password" name=password />
+                                                            placeholder="Password" name="password" />
                                                         <label>Password</label>
                                                     </div>
                                                     <div>
