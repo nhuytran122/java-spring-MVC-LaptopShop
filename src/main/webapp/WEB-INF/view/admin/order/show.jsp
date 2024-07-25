@@ -56,13 +56,12 @@
                                                             <td>${order.user.fullName}</td>
                                                             <td>${order.status}</td>
                                                             <td>
-                                                                fdgfdgdfg
-                                                                <!-- <a href="/admin/order/${order.id}"
-                                                                class="btn btn-success">View</a>
-                                                            <a href="/admin/orders/update/${orders.id}"
-                                                                class="btn btn-warning mx-2">Update</a>
-                                                            <a href="/admin/orders/delete/${orders.id}"
-                                                                class="btn btn-danger">Delete</a> -->
+                                                                <a href="/admin/order/${order.id}"
+                                                                    class="btn btn-success">View</a>
+                                                                <a href="/admin/order/update/${order.id}"
+                                                                    class="btn btn-warning  mx-2">Update</a>
+                                                                <a href="/admin/order/delete/${order.id}"
+                                                                    class="btn btn-danger">Delete</a>
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
