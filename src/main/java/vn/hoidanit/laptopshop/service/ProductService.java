@@ -166,7 +166,7 @@ public class ProductService {
                     orderDetail.setOrder(order);
                     orderDetail.setProduct(cd.getProduct());
                     orderDetail.setQuantity(cd.getQuantity());
-                    orderDetail.setPrice(cd.getQuantity());
+                    orderDetail.setPrice(cd.getPrice());
                     this.orderDetailRepository.save(orderDetail);
                 }
 
