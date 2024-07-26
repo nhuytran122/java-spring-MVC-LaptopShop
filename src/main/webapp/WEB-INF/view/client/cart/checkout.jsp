@@ -103,9 +103,10 @@
                                                 </td>
                                                 <td>
                                                     <div class="input-group quantity mt-4" style="width: 100px;">
-                                                        <input type="text" disabled 
+                                                        <input type="text" disabled style="background: none;"
                                                             class="form-control form-control-sm text-center border-0"
-                                                            value="${cartDetail.quantity}">
+                                                            value="${cartDetail.quantity}" />
+
                                                     </div>
                                                 </td>
                                                 <td>
