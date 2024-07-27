@@ -242,7 +242,7 @@
 
                                             <div class="pagination d-flex justify-content-center mt-5">
                                                 <li class="page-item">
-                                                    <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                    <a class="${1 eq currentPage ? 'btn disabled page-link' : 'page-link'}"
                                                         href="/products?page=${currentPage - 1}" aria-label="Previous">
                                                         <span aria-hidden="true">&laquo;</span>
                                                     </a>
@@ -256,7 +256,7 @@
                                                     </li>
                                                 </c:forEach>
                                                 <li class="page-item">
-                                                    <a class="${totalPages eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                    <a class="${totalPages eq currentPage ? 'btn disabled page-link' : 'page-link'}"
                                                         href="/products?page=${currentPage + 1}" aria-label="Next">
                                                         <span aria-hidden="true">&raquo;</span>
                                                     </a>
