@@ -2,7 +2,11 @@ package vn.hoidanit.laptopshop.controller.client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +20,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.CartDetail;
+import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.service.ProductService;
 
@@ -26,7 +31,7 @@ public class ItemController {
     private final ProductService productService;
 
     @GetMapping("/product/{id}")
-    public String getProductPage(Model model, @PathVariable long id) {
+    public String getDetailProductPage(Model model, @PathVariable long id) {
         model.addAttribute("pr", this.productService.getProductByID(id).get());
         return "client/product/detail";
     }
@@ -139,4 +144,27 @@ public class ItemController {
         return "client/cart/thanks";
     }
 
+    @GetMapping("/products")
+    public String getProductPage(Model model,
+            @RequestParam("page") Optional<String> pageOptional) {
+        int page = 1;
+        try {
+            if(pageOptional.isPresent()){
+                //convert  from Sting to int
+                page = Integer.parseInt(pageOptional.get());
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        Pageable pageable = PageRequest.of(page - 1, 6);
+        Page<Product> prs = this.productService.fetchProducts(pageable);
+        
+        List<Product> listProducts = prs.getContent();
+        model.addAttribute("products", listProducts);
+
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", prs.getTotalPages());
+
+        return "client/product/show";
+    }
 }
