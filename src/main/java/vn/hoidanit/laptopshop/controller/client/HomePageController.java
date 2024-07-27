@@ -2,6 +2,9 @@ package vn.hoidanit.laptopshop.controller.client;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import lombok.AllArgsConstructor;
 import vn.hoidanit.laptopshop.domain.Order;
+import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 import vn.hoidanit.laptopshop.service.OrderService;
@@ -35,7 +39,11 @@ public class HomePageController {
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        model.addAttribute("products", this.productService.fetchProducts());
+        // model.addAttribute("products", this.productService.fetchProducts());
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Product> prs = this.productService.fetchProducts(pageable);
+        List<Product> products = prs.getContent();
+        model.addAttribute("products", products);
         return "client/homepage/show";
     }
 
