@@ -35,6 +35,15 @@
 
                     <!-- Template Stylesheet -->
                     <link href="/client/css/style.css" rel="stylesheet">
+                
+                    <!-- <style>
+                        .page-link.disabled {
+                            color: var(--bs-pagination-disabled-color);
+                            pointer-events: none;
+                            background-color: var(--bs-pagination-disabled-bg);
+                        }
+                    </style> -->
+                
                 </head>
 
                 <body>
@@ -187,7 +196,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <button
-                                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4"
+                                                    class="border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4"
                                                     id="btnFilter">
                                                     Lọc Sản Phẩm
                                                 </button>
