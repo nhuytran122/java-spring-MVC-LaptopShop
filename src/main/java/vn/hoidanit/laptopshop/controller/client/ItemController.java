@@ -23,6 +23,7 @@ import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.CartDetail;
 import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.domain.dto.ProductCriteriaDTO;
 import vn.hoidanit.laptopshop.service.ProductService;
 
 @AllArgsConstructor
@@ -147,27 +148,22 @@ public class ItemController {
 
     @GetMapping("/products")
     public String getProductPage(Model model,
-            @RequestParam("page") Optional<String> pageOptional,
-            @RequestParam("name") Optional<String> nameOptional,
-            @RequestParam("factory") Optional<String> factoryOptional,
-            @RequestParam("target") Optional<String> targetOptional,
-            @RequestParam("price") Optional<String> priceOptional,
-            @RequestParam("sort") Optional<String> sortOptional) {
+            ProductCriteriaDTO productCriteriaDTO) {
         int page = 1;
         try {
-            if (pageOptional.isPresent()) {
+            if (productCriteriaDTO.getPage().isPresent()) {
                 // convert from Sting to int
-                page = Integer.parseInt(pageOptional.get());
+                page = Integer.parseInt(productCriteriaDTO.getPage().get());
             }
         } catch (Exception e) {
             // TODO: handle exception
         }
 
         Pageable pageable = PageRequest.of(page - 1, 60);
+        Page<Product> prs = this.productService.fetchProducts(pageable);
+        // String name = nameOptional.isPresent() ? nameOptional.get() : "";
 
-        String name = nameOptional.isPresent() ? nameOptional.get() : "";
-
-        Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, name);
+        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, name);
 
         // case 1
         // double min = minOptional.isPresent() ? Double.parseDouble(minOptional.get())
