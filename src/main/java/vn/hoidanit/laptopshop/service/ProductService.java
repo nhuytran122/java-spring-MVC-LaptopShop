@@ -188,12 +188,14 @@ public class ProductService {
     }
 
     public Page<Product> fetchProductsWithSpec(Pageable pageable, ProductCriteriaDTO productCriteriaDTO) {
-        Specification<Product> combinedSpec = Specification.where(null);
+        
         if (productCriteriaDTO.getTarget() == null
                 && productCriteriaDTO.getFactory() == null
                 && productCriteriaDTO.getPrice() == null) {
             return this.productRepository.findAll(pageable);
         }
+
+        Specification<Product> combinedSpec = Specification.where(null);
 
         if (productCriteriaDTO.getTarget() != null && productCriteriaDTO.getTarget().isPresent()) {
             Specification<Product> currentSpecs = ProductSpecs.matchListTarget(productCriteriaDTO.getTarget().get());
@@ -212,7 +214,7 @@ public class ProductService {
     }
 
     public Specification<Product> buildPriceSpecification(List<String> price) {
-        Specification<Product> combinedSpec = (root, query, criteriaBuilder) -> criteriaBuilder.disjunction();
+        Specification<Product> combinedSpec = Specification.where(null); // disconjunction
         for (String p : price) {
             double min = 0;
             double max = 0;
