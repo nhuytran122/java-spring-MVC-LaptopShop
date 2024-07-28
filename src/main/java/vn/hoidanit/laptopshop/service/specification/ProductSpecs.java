@@ -24,8 +24,10 @@ public class ProductSpecs {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Product_.FACTORY), factory);
     }
 
-    // public static Specification<Product> matchListFactory(List<String> factories) {
-    //     return (root, query, criteriaBuilder) -> root.get(Product_.FACTORY).in(factories);
+    // public static Specification<Product> matchListFactory(List<String> factories)
+    // {
+    // return (root, query, criteriaBuilder) ->
+    // root.get(Product_.FACTORY).in(factories);
     // }
 
     // case4
@@ -44,6 +46,10 @@ public class ProductSpecs {
     public static Specification<Product> matchMultiplePrice(double min, double max) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.between(
                 root.get(Product_.PRICE), min, max);
+    }
+
+    public static Specification<Product> matchListTarget(List<String> target) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.in(root.get(Product_.TARGET)).value(target);
     }
 
 }
