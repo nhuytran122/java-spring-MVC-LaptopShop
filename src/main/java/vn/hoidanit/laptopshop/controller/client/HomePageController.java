@@ -56,7 +56,10 @@ public class HomePageController {
     @PostMapping("/register")
     public String handleRegister(
             @ModelAttribute("registerUser") @Valid RegisterDTO registerDTO,
-            BindingResult bindingResult) {
+            BindingResult bindingResult,
+            HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
         if (bindingResult.hasErrors()) {
             return "client/auth/register";
         }
@@ -68,7 +71,7 @@ public class HomePageController {
         user.setPassword(hashPassword);
         user.setRole(this.userService.getRoleByName("USER"));
         // save
-        this.userService.handleSaveServer(user);
+        this.userService.handleSaveServer(user, session);
         return "redirect:/login";
     }
 

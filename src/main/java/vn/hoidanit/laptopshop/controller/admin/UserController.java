@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import vn.hoidanit.laptopshop.domain.User;
@@ -89,8 +91,10 @@ public class UserController {
     public String postUpdateUser(Model model,
             @ModelAttribute("user") @Valid User hoidanit,
             BindingResult newUserbindingResult,
-            @RequestParam("hoidanitFile") MultipartFile file) {
+            @RequestParam("hoidanitFile") MultipartFile file,
+            HttpServletRequest request) {
 
+        HttpSession session = request.getSession(false);
         User currentUser = this.userService.getUserById(hoidanit.getId());
 
         if (newUserbindingResult.hasErrors()) {
@@ -106,7 +110,7 @@ public class UserController {
             currentUser.setFullName(hoidanit.getFullName());
             currentUser.setPhone(hoidanit.getPhone());
 
-            this.userService.handleSaveServer(currentUser);
+            this.userService.handleSaveServer(currentUser, session);
         }
         return "redirect:/admin/user";
     }
@@ -134,8 +138,10 @@ public class UserController {
     public String createUserPage(Model model,
             @ModelAttribute("newUser") @Valid User hoidanit,
             BindingResult newUserbindingResult,
-            @RequestParam("hoidanitFile") MultipartFile file) {
+            @RequestParam("hoidanitFile") MultipartFile file,
+            HttpServletRequest request) {
 
+        HttpSession session = request.getSession(false);
         // validate
         // List<FieldError> errors = newUserbindingResult.getFieldErrors();
         // for (FieldError error : errors) {
@@ -163,7 +169,7 @@ public class UserController {
         hoidanit.setRole(this.userService.getRoleByName(hoidanit.getRole().getName()));
 
         // save
-        this.userService.handleSaveServer(hoidanit);
+        this.userService.handleSaveServer(hoidanit, session);
         return "redirect:/admin/user";
     }
 

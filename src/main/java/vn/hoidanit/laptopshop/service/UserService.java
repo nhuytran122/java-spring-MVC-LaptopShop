@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import vn.hoidanit.laptopshop.domain.Role;
 import vn.hoidanit.laptopshop.domain.User;
@@ -43,10 +44,14 @@ public class UserService {
         this.userRepository.deleteById(id);
     }
 
-    public User handleSaveServer(User user) {
-        User eric = this.userRepository.save(user);
-        System.out.println(eric);
-        return eric;
+    public User handleSaveServer(User user, HttpSession session) {
+        User newUser = this.userRepository.save(user);
+
+        session.setAttribute("fullName", newUser.getFullName());
+        session.setAttribute("avatar", newUser.getAvatar());
+
+        System.out.println(newUser);
+        return newUser;
     }
 
     public Role getRoleByName(String name) {
