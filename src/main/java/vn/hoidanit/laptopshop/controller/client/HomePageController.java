@@ -70,6 +70,10 @@ public class HomePageController {
 
         user.setPassword(hashPassword);
         user.setRole(this.userService.getRoleByName("USER"));
+        
+        String avatar = "avatar-default.jpg";
+        user.setAvatar(avatar);
+
         // save
         this.userService.handleSaveServer(user, session);
         return "redirect:/login";
