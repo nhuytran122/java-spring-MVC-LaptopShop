@@ -19,6 +19,7 @@ import vn.hoidanit.laptopshop.service.validator.StrongPassword;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 // import lombok.ToString; : tránh lỗi StackOverflowError
 import jakarta.validation.constraints.Size;
 
@@ -52,6 +53,7 @@ public class User {
     private String fullName;
 
     private String address;
+    @Pattern(regexp = "^(0[0-9]{9})$", message = "Số điện thoại không hợp lệ")
     private String phone;
 
     private String avatar;
