@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Laptop Shop Web Application
 
 ## Overview
@@ -88,4 +89,6 @@ To run this project locally, follow these steps:
 ## Note
 
 This source code is created as part of a learning project to understand and practice **Java Spring MVC** development. It is based on content from an educational course and is intended for **learning purposes only**. It may not follow all best practices for professional development.
+=======
+>>>>>>> 0f4b01a9bb57d63cec06fd15a13a3e1d652d8ec6
 
