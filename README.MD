@@ -85,6 +85,20 @@ To run this project locally, follow these steps:
 
    Open your browser and navigate to `http://localhost:8081` to view the application.
 
+### Test Accounts
+
+You can use the following test accounts to explore the application's features:
+
+- **User Account:**
+  - **Email:** `user@gmail.com`
+  - **Password:** `123456`
+  - Access level: Regular user (can browse products, manage the cart, and place orders).
+
+- **Admin Account:**
+  - **Email:** `admin@gmail.com`
+  - **Password:** `123456`
+  - Access level: Admin (can manage products, users, and orders via the Admin Panel).
+
 ## Note
 
 This source code is created as part of a learning project to understand and practice **Java Spring MVC** development. It is based on content from an educational course and is intended for **learning purposes only**. It may not follow all best practices for professional development.
